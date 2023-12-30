@@ -28,7 +28,7 @@ setup(
     version=VERSION,
     description="WarAPI",
     author_email="",
-    url="",
+    url="https://github.com/Opa-/foxhole-warapi-python-client",
     keywords=["Swagger", "WarAPI"],
     install_requires=REQUIRES,
     packages=find_packages(),
