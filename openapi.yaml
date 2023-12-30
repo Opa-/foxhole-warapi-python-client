@@ -1,0 +1,466 @@
+openapi: 3.0.3
+info:
+  title: WarAPI
+  description: |-
+    The War API allows developers to query information about the state of the current Foxhole World Conquest.
+  version: v1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://war-service-live.foxholeservices.com/api
+  - url: https://war-service-live-2.foxholeservices.com/api
+  - url: https://war-service-live-3.foxholeservices.com/api
+  - url: https://war-service-dev.foxholeservices.com/api
+tags:
+  - name: war
+    description: Returns data about the current state of the war.
+  - name: maps
+    description: Returns data about the current state of the maps.
+  - name: external
+    description: Hidden endpoints to retrieve shard statuses.
+paths:
+  /worldconquest/war:
+    get:
+      tags:
+        - war
+      summary: Returns data about the current state of the war.
+      description: <p>The number of required victory towns that's returned by this endpoint represents a static configuration value and does not take any scorched victory towns into account. This means that if you wish to determine how many victory towns are required to win the war, you must reduce it by one for each scorched victory town. A scorched victory town is any map item that has both the IsVictoryBase and IsScorched flags set. See the Map Data section for more details.</p>
+        
+        <i>This data may update every 60 seconds.</i>
+      operationId: getWar
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/War'
+  /worldconquest/maps:
+    get:
+      tags:
+        - maps
+      summary: Returns a list of the active World Conquest map names.
+      description: '<p>Note: The maps HomeRegionC and HomeRegionW are returned here, but do not have map data available in this version.</p>'
+      operationId: getMaps
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - TheFingersHex
+                  - TempestIslandHex
+                  - GreatMarchHex
+                  - MarbanHollow
+                  - ViperPitHex
+                  - BasinSionnachHex
+                  - StemaLandingHex
+                  - DeadLandsHex
+                  - HeartlandsHex
+                  - EndlessShoreHex
+                  - WestgateHex
+                  - OarbreakerHex
+                  - AcrithiaHex
+                  - MooringCountyHex
+                  - WeatheredExpanseHex
+                  - ReaversPassHex
+                  - MorgensCrossingHex
+                  - LochMorHex
+                  - StonecradleHex
+                  - KalokaiHex
+                  - AllodsBightHex
+                  - RedRiverHex
+                  - OriginHex
+                  - ClahstraHex
+                  - HowlCountyHex
+                  - SpeakingWoodsHex
+                  - ShackledChasmHex
+                  - TerminusHex
+                  - LinnMercyHex
+                  - ClansheadValleyHex
+                  - GodcroftsHex
+                  - NevishLineHex
+                  - CallumsCapeHex
+                  - FishermansRowHex
+                  - ReachingTrailHex
+                  - UmbralWildwoodHex
+                  - StlicanShelfHex
+                  - CallahansPassageHex
+                  - KingsCageHex
+                  - AshFieldsHex
+                  - DrownedValeHex
+                  - FarranacCoastHex
+                  - SableportHex
+  /worldconquest/warReport/{mapName}:
+    get:
+      tags:
+        - maps
+      summary: Returns the number of enlistments, casualties, and other map specific information.
+      description: <p></p><i>This data may update every 3 seconds.</i>
+      operationId: getWarReport
+      parameters:
+        - in: path
+          name: mapName
+          schema:
+            type: string
+          required: true
+          example: DeadLandsHex
+          description: Name of the map
+        - in: header
+          name: If-None-Match
+          schema:
+            $ref: '#/components/headers/If-None-Match'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WarReport'
+        '304':
+          description: Resource not modified
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+  /worldconquest/maps/{mapName}/static:
+    get:
+      tags:
+        - maps
+      summary: Static map data includes things that never change over the lifecycle of a map. This includes map text labels, resource nodes, and world structures.
+      description: <p></p><i>You only need to request this once per map between World Conquests.</i>
+      operationId: getMapStatic
+      parameters:
+        - in: path
+          name: mapName
+          schema:
+            type: string
+          required: true
+          example: DeadLandsHex
+          description: Name of the map
+        - in: header
+          name: If-None-Match
+          schema:
+            $ref: '#/components/headers/If-None-Match'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Map'
+        '304':
+          description: Resource not modified
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+  /worldconquest/maps/{mapName}/dynamic/public:
+    get:
+      tags:
+        - maps
+      summary: Dynamic map data includes map icons that could change over the lifecycle of a map. This includes static bases and static base build sites.
+      description: <p>Team-specific data and forward bases are excluded.</p><i>This data may update every 3 seconds.</i>
+      operationId: getMapDynamic
+      parameters:
+        - in: path
+          name: mapName
+          schema:
+            type: string
+          required: true
+          example: DeadLandsHex
+          description: Name of the map
+        - in: header
+          name: If-None-Match
+          schema:
+            $ref: '#/components/headers/If-None-Match'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Map'
+        '304':
+          description: Resource not modified
+          headers:
+            ETag:
+              $ref: '#/components/headers/ETag'
+  /external/shardStatus:
+    get:
+      tags:
+        - external
+      summary: Hidden endpoint returning information about each server.
+      operationId: getShardStatus
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShardStatus'
+components:
+  headers:
+    ETag:
+      description: 'https://datatracker.ietf.org/doc/html/rfc7232'
+      schema:
+        type: string
+        example: "10"
+    If-None-Match:
+      description: 'https://datatracker.ietf.org/doc/html/rfc7232'
+      schema:
+        type: string
+        example: "10"
+  schemas:
+    FactionEnum:
+      type: string
+      example: NONE
+      enum:
+        - NONE
+        - WARDENS
+        - COLONIALS
+    War:
+      type: object
+      properties:
+        warId:
+          type: string
+          format: uuid
+          example: "4ef9c639-c660-4a57-ac96-8521c7e4b20e"
+        warNumber:
+          type: integer
+          format: int32
+          example: 109
+        winner:
+          $ref: '#/components/schemas/FactionEnum'
+        conquestStartTime:
+          type: integer
+          format: unix-timestamp
+          example: 1701801322204
+        conquestEndTime:
+          type: integer
+          format: unix-timestamp
+          example: null
+        resistanceStartTime:
+          type: integer
+          format: unix-timestamp
+          example: null
+        requiredVictoryTowns:
+          type: integer
+          format: int32
+          example: 32
+    WarReport:
+      type: object
+      properties:
+        totalEnlistments:
+          type: integer
+          format: int32
+          example: 148
+        colonialCasualties:
+          type: integer
+          format: int32
+          example: 202
+        wardenCasualties:
+          type: integer
+          format: int32
+          example: 222
+        dayOfWar:
+          type: integer
+          format: int32
+          example: 2
+    Map:
+      type: object
+      properties:
+        regionId:
+          type: integer
+          format: int32
+          example: 43
+        scorchedVictoryTowns:
+          type: integer
+          format: int32
+          example: 0
+        mapItems:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/MapItem'
+        mapItemsC:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/MapItem'
+        mapItemsW:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/MapItem'
+        mapTextItems:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/MapTextItems'
+        lastUpdated:
+          type: integer
+          format: unix-timestamp
+          example: 1703866455284
+        version:
+          type: integer
+          format: int32
+          example: 2
+    MapTextItems:
+      type: object
+      properties:
+        text:
+          type: string
+          example: "Abandoned Ward"
+        x:
+          type: number
+          format: float
+          example: 0.74243516
+        y:
+          type: number
+          format: float
+          example: 0.7063276
+        mapMarkerType:
+          type: string
+          example: Major
+          enum:
+            - Major
+            - Minor
+    MapItem:
+      type: object
+      properties:
+        teamId:
+          $ref: '#/components/schemas/FactionEnum'
+        iconType:
+          type: integer
+          format: int32
+          example: 61
+        x:
+          type: number
+          format: float
+          example: 0.74243516
+        y:
+          type: number
+          format: float
+          example: 0.7063276
+        flags:
+          type: integer
+          format: int32
+          example: 0
+        viewDirection:
+          type: integer
+          format: int32
+          example: 0
+    ShardStatus:
+      type: object
+      properties:
+        bShowColonialQueueWarning:
+          type: boolean
+          example: true
+        bShowWardenQueueWarning:
+          type: boolean
+          example: false
+        normalizedGlobalPopulation:
+          type: number
+          format: float
+          example: 0.22386667
+        serverConnectionInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServerConnectionInfo'
+        warId:
+          type: string
+          format: uuid
+          example: "4ef9c639-c660-4a57-ac96-8521c7e4b20e"
+        squadMaxSize:
+          type: integer
+          format: int32
+          example: 40
+        secondsToPreConquest:
+          type: integer
+          format: int32
+          example: 0
+        bIsPreConquest:
+          type: boolean
+          example: false
+        bIsVIPMode:
+          type: boolean
+          example: false
+    ServerConnectionInfo:
+      type: object
+      properties:
+        currentMap:
+          type: string
+          example: "DeadLandsHex"
+        steamId:
+          type: string
+          example: "90179095218202645"
+        ipAddress:
+          type: string
+          example: ""
+        port:
+          type: integer
+          format: int32
+          example: 7777
+        beaconPort:
+          type: integer
+          format: int32
+          example: 15000
+        packedWarStatus:
+          type: integer
+          format: int64
+          example: 864715317813116800
+        packedServerState:
+          type: integer
+          format: int32
+          example: 8914044
+        colonialQueueSize:
+          type: integer
+          format: int32
+          example: 0
+        wardenQueueSize:
+          type: integer
+          format: int32
+          example: 0
+        name:
+          type: string
+          example: "DeadLands-5"
+        version:
+          type: string
+          example: "1.55.2.2"
+        serverType:
+          type: integer
+          format: int32
+          example: 1
+        mapId:
+          type: integer
+          format: int32
+          example: 3
+        openColonialSlots:
+          type: integer
+          format: int32
+          example: 0
+        openWardenSlots:
+          type: integer
+          format: int32
+          example: 0
+        freeDiskSpaceInMb:
+          type: integer
+          format: int64
+          example: 1277137
+        totalDiskSpaceInMb:
+          type: integer
+          format: int64
+          example: 1831090
