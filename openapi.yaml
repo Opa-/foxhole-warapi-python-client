@@ -111,16 +111,13 @@ paths:
           required: true
           example: DeadLandsHex
           description: Name of the map
-        - in: header
-          name: If-None-Match
-          schema:
-            $ref: '#/components/headers/If-None-Match'
+        - $ref: '#/components/parameters/IfNoneMatchHeader'
       responses:
         '200':
           description: Successful operation
           headers:
             ETag:
-              $ref: '#/components/headers/ETag'
+              $ref: '#/components/headers/ETagHeader'
           content:
             application/json:
               schema:
@@ -129,7 +126,7 @@ paths:
           description: Resource not modified
           headers:
             ETag:
-              $ref: '#/components/headers/ETag'
+              $ref: '#/components/headers/ETagHeader'
   /worldconquest/maps/{mapName}/static:
     get:
       tags:
@@ -145,16 +142,13 @@ paths:
           required: true
           example: DeadLandsHex
           description: Name of the map
-        - in: header
-          name: If-None-Match
-          schema:
-            $ref: '#/components/headers/If-None-Match'
+        - $ref: '#/components/parameters/IfNoneMatchHeader'
       responses:
         '200':
           description: Successful operation
           headers:
             ETag:
-              $ref: '#/components/headers/ETag'
+              $ref: '#/components/headers/ETagHeader'
           content:
             application/json:
               schema:
@@ -163,7 +157,7 @@ paths:
           description: Resource not modified
           headers:
             ETag:
-              $ref: '#/components/headers/ETag'
+              $ref: '#/components/headers/ETagHeader'
   /worldconquest/maps/{mapName}/dynamic/public:
     get:
       tags:
@@ -179,16 +173,13 @@ paths:
           required: true
           example: DeadLandsHex
           description: Name of the map
-        - in: header
-          name: If-None-Match
-          schema:
-            $ref: '#/components/headers/If-None-Match'
+        - $ref: '#/components/parameters/IfNoneMatchHeader'
       responses:
         '200':
           description: Successful operation
           headers:
             ETag:
-              $ref: '#/components/headers/ETag'
+              $ref: '#/components/headers/ETagHeader'
           content:
             application/json:
               schema:
@@ -197,7 +188,7 @@ paths:
           description: Resource not modified
           headers:
             ETag:
-              $ref: '#/components/headers/ETag'
+              $ref: '#/components/headers/ETagHeader'
   /external/shardStatus:
     get:
       tags:
@@ -212,13 +203,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/ShardStatus'
 components:
-  headers:
-    ETag:
+  parameters:
+    IfNoneMatchHeader:
+      in: header
+      name: If-None-Match
       description: 'https://datatracker.ietf.org/doc/html/rfc7232'
       schema:
         type: string
         example: "10"
-    If-None-Match:
+  headers:
+    ETagHeader:
       description: 'https://datatracker.ietf.org/doc/html/rfc7232'
       schema:
         type: string
