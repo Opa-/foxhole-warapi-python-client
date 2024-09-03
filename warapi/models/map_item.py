@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from warapi_client.models.faction_enum import FactionEnum
+from warapi.models.faction_enum import FactionEnum
 from typing import Optional, Set
 from typing_extensions import Self
 

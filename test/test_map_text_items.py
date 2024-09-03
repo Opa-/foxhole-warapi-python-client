@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -14,7 +14,7 @@
 
 import unittest
 
-from warapi_client.models.map_text_items import MapTextItems
+from warapi.models.map_text_items import MapTextItems
 
 class TestMapTextItems(unittest.TestCase):
     """MapTextItems unit test stubs"""

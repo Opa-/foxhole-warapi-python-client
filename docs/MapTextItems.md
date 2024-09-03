@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from warapi_client.models.map_text_items import MapTextItems
+from warapi.models.map_text_items import MapTextItems
 
 # TODO update the JSON string below
 json = "{}"

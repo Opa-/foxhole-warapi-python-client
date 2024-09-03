@@ -1,4 +1,4 @@
-# warapi_client.WarApi
+# warapi.WarApi
 
 All URIs are relative to *https://war-service-live.foxholeservices.com/api*
 
@@ -18,22 +18,22 @@ Returns data about the current state of the war.
 
 
 ```python
-import warapi_client
-from warapi_client.models.war import War
-from warapi_client.rest import ApiException
+import warapi
+from warapi.models.war import War
+from warapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = warapi_client.Configuration(
+configuration = warapi.Configuration(
     host = "https://war-service-live.foxholeservices.com/api"
 )
 
 
 # Enter a context with an instance of the API client
-with warapi_client.ApiClient(configuration) as api_client:
+with warapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = warapi_client.WarApi(api_client)
+    api_instance = warapi.WarApi(api_client)
 
     try:
         # Returns data about the current state of the war.

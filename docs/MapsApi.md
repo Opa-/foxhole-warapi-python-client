@@ -1,4 +1,4 @@
-# warapi_client.MapsApi
+# warapi.MapsApi
 
 All URIs are relative to *https://war-service-live.foxholeservices.com/api*
 
@@ -21,22 +21,22 @@ Dynamic map data includes map icons that could change over the lifecycle of a ma
 
 
 ```python
-import warapi_client
-from warapi_client.models.map import Map
-from warapi_client.rest import ApiException
+import warapi
+from warapi.models.map import Map
+from warapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = warapi_client.Configuration(
+configuration = warapi.Configuration(
     host = "https://war-service-live.foxholeservices.com/api"
 )
 
 
 # Enter a context with an instance of the API client
-with warapi_client.ApiClient(configuration) as api_client:
+with warapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = warapi_client.MapsApi(api_client)
+    api_instance = warapi.MapsApi(api_client)
     map_name = 'DeadLandsHex' # str | Name of the map
     if_none_match = '10' # str | https://datatracker.ietf.org/doc/html/rfc7232 (optional)
 
@@ -92,22 +92,22 @@ Static map data includes things that never change over the lifecycle of a map. T
 
 
 ```python
-import warapi_client
-from warapi_client.models.map import Map
-from warapi_client.rest import ApiException
+import warapi
+from warapi.models.map import Map
+from warapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = warapi_client.Configuration(
+configuration = warapi.Configuration(
     host = "https://war-service-live.foxholeservices.com/api"
 )
 
 
 # Enter a context with an instance of the API client
-with warapi_client.ApiClient(configuration) as api_client:
+with warapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = warapi_client.MapsApi(api_client)
+    api_instance = warapi.MapsApi(api_client)
     map_name = 'DeadLandsHex' # str | Name of the map
     if_none_match = '10' # str | https://datatracker.ietf.org/doc/html/rfc7232 (optional)
 
@@ -163,21 +163,21 @@ Returns a list of the active World Conquest map names.
 
 
 ```python
-import warapi_client
-from warapi_client.rest import ApiException
+import warapi
+from warapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = warapi_client.Configuration(
+configuration = warapi.Configuration(
     host = "https://war-service-live.foxholeservices.com/api"
 )
 
 
 # Enter a context with an instance of the API client
-with warapi_client.ApiClient(configuration) as api_client:
+with warapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = warapi_client.MapsApi(api_client)
+    api_instance = warapi.MapsApi(api_client)
 
     try:
         # Returns a list of the active World Conquest map names.
@@ -226,22 +226,22 @@ Returns the number of enlistments, casualties, and other map specific informatio
 
 
 ```python
-import warapi_client
-from warapi_client.models.war_report import WarReport
-from warapi_client.rest import ApiException
+import warapi
+from warapi.models.war_report import WarReport
+from warapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = warapi_client.Configuration(
+configuration = warapi.Configuration(
     host = "https://war-service-live.foxholeservices.com/api"
 )
 
 
 # Enter a context with an instance of the API client
-with warapi_client.ApiClient(configuration) as api_client:
+with warapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = warapi_client.MapsApi(api_client)
+    api_instance = warapi.MapsApi(api_client)
     map_name = 'DeadLandsHex' # str | Name of the map
     if_none_match = '10' # str | https://datatracker.ietf.org/doc/html/rfc7232 (optional)
 

@@ -1,6 +1,6 @@
 {
-  "packageName": "warapi_client",
+  "packageName": "warapi",
   "projectName": "foxhole-warapi-client",
-  "packageVersion": "1.0.1",
+  "packageVersion": "1.0.0",
   "packageUrl": "https://github.com/Opa-/foxhole-warapi-python-client"
 }

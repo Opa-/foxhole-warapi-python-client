@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -21,7 +21,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 NAME = "foxhole-warapi-client"
-VERSION = "1.0.1"
+VERSION = "1.0.0"
 PYTHON_REQUIRES = ">=3.7"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0",
@@ -33,11 +33,11 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="WarAPI",
+    description="Foxhole WarAPI",
     author="OpenAPI Generator community",
     author_email="team@openapitools.org",
     url="https://github.com/Opa-/foxhole-warapi-python-client",
-    keywords=["OpenAPI", "OpenAPI-Generator", "WarAPI"],
+    keywords=["OpenAPI", "OpenAPI-Generator", "Foxhole WarAPI"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
@@ -45,5 +45,5 @@ setup(
     long_description="""\
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
     """,  # noqa: E501
-    package_data={"warapi_client": ["py.typed"]},
+    package_data={"warapi": ["py.typed"]},
 )

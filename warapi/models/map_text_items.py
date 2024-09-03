@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -17,20 +17,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class WarReport(BaseModel):
+class MapTextItems(BaseModel):
     """
-    WarReport
+    MapTextItems
     """ # noqa: E501
-    total_enlistments: Optional[StrictInt] = Field(default=None, alias="totalEnlistments")
-    colonial_casualties: Optional[StrictInt] = Field(default=None, alias="colonialCasualties")
-    warden_casualties: Optional[StrictInt] = Field(default=None, alias="wardenCasualties")
-    day_of_war: Optional[StrictInt] = Field(default=None, alias="dayOfWar")
-    __properties: ClassVar[List[str]] = ["totalEnlistments", "colonialCasualties", "wardenCasualties", "dayOfWar"]
+    text: Optional[StrictStr] = None
+    x: Optional[Union[StrictFloat, StrictInt]] = None
+    y: Optional[Union[StrictFloat, StrictInt]] = None
+    map_marker_type: Optional[StrictStr] = Field(default=None, alias="mapMarkerType")
+    __properties: ClassVar[List[str]] = ["text", "x", "y", "mapMarkerType"]
+
+    @field_validator('map_marker_type')
+    def map_marker_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['Major', 'Minor']):
+            raise ValueError("must be one of enum values ('Major', 'Minor')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +60,7 @@ class WarReport(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of WarReport from a JSON string"""
+        """Create an instance of MapTextItems from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +85,7 @@ class WarReport(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of WarReport from a dict"""
+        """Create an instance of MapTextItems from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +93,10 @@ class WarReport(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "totalEnlistments": obj.get("totalEnlistments"),
-            "colonialCasualties": obj.get("colonialCasualties"),
-            "wardenCasualties": obj.get("wardenCasualties"),
-            "dayOfWar": obj.get("dayOfWar")
+            "text": obj.get("text"),
+            "x": obj.get("x"),
+            "y": obj.get("y"),
+            "mapMarkerType": obj.get("mapMarkerType")
         })
         return _obj
 

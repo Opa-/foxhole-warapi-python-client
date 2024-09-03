@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -14,7 +14,7 @@
 
 import unittest
 
-from warapi_client.models.shard_status import ShardStatus
+from warapi.models.shard_status import ShardStatus
 
 class TestShardStatus(unittest.TestCase):
     """ShardStatus unit test stubs"""
@@ -39,7 +39,7 @@ class TestShardStatus(unittest.TestCase):
                 b_show_warden_queue_warning = False,
                 normalized_global_population = 0.22386667,
                 server_connection_info_list = [
-                    warapi_client.models.server_connection_info.ServerConnectionInfo(
+                    warapi.models.server_connection_info.ServerConnectionInfo(
                         current_map = 'DeadLandsHex', 
                         steam_id = '90179095218202645', 
                         ip_address = '', 

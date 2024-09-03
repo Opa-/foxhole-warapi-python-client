@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from warapi_client.models.server_connection_info import ServerConnectionInfo
+from warapi.models.server_connection_info import ServerConnectionInfo
 
 # TODO update the JSON string below
 json = "{}"

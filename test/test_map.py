@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -14,7 +14,7 @@
 
 import unittest
 
-from warapi_client.models.map import Map
+from warapi.models.map import Map
 
 class TestMap(unittest.TestCase):
     """Map unit test stubs"""
@@ -38,7 +38,7 @@ class TestMap(unittest.TestCase):
                 region_id = 43,
                 scorched_victory_towns = 0,
                 map_items = [
-                    warapi_client.models.map_item.MapItem(
+                    warapi.models.map_item.MapItem(
                         team_id = 'NONE', 
                         icon_type = 61, 
                         x = 0.74243516, 
@@ -47,7 +47,7 @@ class TestMap(unittest.TestCase):
                         view_direction = 0, )
                     ],
                 map_items_c = [
-                    warapi_client.models.map_item.MapItem(
+                    warapi.models.map_item.MapItem(
                         team_id = 'NONE', 
                         icon_type = 61, 
                         x = 0.74243516, 
@@ -56,7 +56,7 @@ class TestMap(unittest.TestCase):
                         view_direction = 0, )
                     ],
                 map_items_w = [
-                    warapi_client.models.map_item.MapItem(
+                    warapi.models.map_item.MapItem(
                         team_id = 'NONE', 
                         icon_type = 61, 
                         x = 0.74243516, 
@@ -65,7 +65,7 @@ class TestMap(unittest.TestCase):
                         view_direction = 0, )
                     ],
                 map_text_items = [
-                    warapi_client.models.map_text_items.MapTextItems(
+                    warapi.models.map_text_items.MapTextItems(
                         text = 'Abandoned Ward', 
                         x = 0.74243516, 
                         y = 0.7063276, 

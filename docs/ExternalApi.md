@@ -1,4 +1,4 @@
-# warapi_client.ExternalApi
+# warapi.ExternalApi
 
 All URIs are relative to *https://war-service-live.foxholeservices.com/api*
 
@@ -16,22 +16,22 @@ Hidden endpoint returning information about each server.
 
 
 ```python
-import warapi_client
-from warapi_client.models.shard_status import ShardStatus
-from warapi_client.rest import ApiException
+import warapi
+from warapi.models.shard_status import ShardStatus
+from warapi.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
 # See configuration.py for a list of all supported configuration parameters.
-configuration = warapi_client.Configuration(
+configuration = warapi.Configuration(
     host = "https://war-service-live.foxholeservices.com/api"
 )
 
 
 # Enter a context with an instance of the API client
-with warapi_client.ApiClient(configuration) as api_client:
+with warapi.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = warapi_client.ExternalApi(api_client)
+    api_instance = warapi.ExternalApi(api_client)
 
     try:
         # Hidden endpoint returning information about each server.

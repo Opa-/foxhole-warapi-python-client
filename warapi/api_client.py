@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    WarAPI
+    Foxhole WarAPI
 
     The War API allows developers to query information about the state of the current Foxhole World Conquest.
 
@@ -26,11 +26,11 @@ from urllib.parse import quote
 from typing import Tuple, Optional, List, Dict, Union
 from pydantic import SecretStr
 
-from warapi_client.configuration import Configuration
-from warapi_client.api_response import ApiResponse, T as ApiResponseT
-import warapi_client.models
-from warapi_client import rest
-from warapi_client.exceptions import (
+from warapi.configuration import Configuration
+from warapi.api_response import ApiResponse, T as ApiResponseT
+import warapi.models
+from warapi import rest
+from warapi.exceptions import (
     ApiValueError,
     ApiException,
     BadRequestException,
@@ -90,7 +90,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.0.1/python'
+        self.user_agent = 'OpenAPI-Generator/1.0.0/python'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
@@ -449,7 +449,7 @@ class ApiClient:
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(warapi_client.models, klass)
+                klass = getattr(warapi.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

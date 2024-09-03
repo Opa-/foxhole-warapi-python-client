@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from warapi_client.models.war_report import WarReport
+from warapi.models.war_report import WarReport
 
 # TODO update the JSON string below
 json = "{}"
