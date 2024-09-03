@@ -1,6 +1,8 @@
 # ServerConnectionInfo
 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **current_map** | **str** |  | [optional] 
@@ -21,5 +23,23 @@ Name | Type | Description | Notes
 **free_disk_space_in_mb** | **int** |  | [optional] 
 **total_disk_space_in_mb** | **int** |  | [optional] 
 
+## Example
+
+```python
+from warapi_client.models.server_connection_info import ServerConnectionInfo
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ServerConnectionInfo from a JSON string
+server_connection_info_instance = ServerConnectionInfo.from_json(json)
+# print the JSON string representation of the object
+print(ServerConnectionInfo.to_json())
+
+# convert the object into a dict
+server_connection_info_dict = server_connection_info_instance.to_dict()
+# create an instance of ServerConnectionInfo from a dict
+server_connection_info_from_dict = ServerConnectionInfo.from_dict(server_connection_info_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

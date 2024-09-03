@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**get_maps**](MapsApi.md#get_maps) | **GET** /worldconquest/maps | Returns a list of the active World Conquest map names.
 [**get_war_report**](MapsApi.md#get_war_report) | **GET** /worldconquest/warReport/{mapName} | Returns the number of enlistments, casualties, and other map specific information.
 
+
 # **get_map_dynamic**
 > Map get_map_dynamic(map_name, if_none_match=if_none_match)
 
@@ -17,32 +18,46 @@ Dynamic map data includes map icons that could change over the lifecycle of a ma
 <p>Team-specific data and forward bases are excluded.</p><i>This data may update every 3 seconds.</i>
 
 ### Example
+
+
 ```python
-from __future__ import print_function
-import time
 import warapi_client
+from warapi_client.models.map import Map
 from warapi_client.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = warapi_client.MapsApi()
-map_name = 'map_name_example' # str | Name of the map
-if_none_match = warapi_client.ComponentsheadersIfNoneMatch() # ComponentsheadersIfNoneMatch |  (optional)
+# Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = warapi_client.Configuration(
+    host = "https://war-service-live.foxholeservices.com/api"
+)
 
-try:
-    # Dynamic map data includes map icons that could change over the lifecycle of a map. This includes static bases and static base build sites.
-    api_response = api_instance.get_map_dynamic(map_name, if_none_match=if_none_match)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MapsApi->get_map_dynamic: %s\n" % e)
+
+# Enter a context with an instance of the API client
+with warapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = warapi_client.MapsApi(api_client)
+    map_name = 'DeadLandsHex' # str | Name of the map
+    if_none_match = '10' # str | https://datatracker.ietf.org/doc/html/rfc7232 (optional)
+
+    try:
+        # Dynamic map data includes map icons that could change over the lifecycle of a map. This includes static bases and static base build sites.
+        api_response = api_instance.get_map_dynamic(map_name, if_none_match=if_none_match)
+        print("The response of MapsApi->get_map_dynamic:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MapsApi->get_map_dynamic: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **map_name** | **str**| Name of the map | 
- **if_none_match** | [**ComponentsheadersIfNoneMatch**](.md)|  | [optional] 
+ **if_none_match** | **str**| https://datatracker.ietf.org/doc/html/rfc7232 | [optional] 
 
 ### Return type
 
@@ -56,6 +71,13 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful operation |  * ETag -  <br>  |
+**304** | Resource not modified |  * ETag -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -67,32 +89,46 @@ Static map data includes things that never change over the lifecycle of a map. T
 <p></p><i>You only need to request this once per map between World Conquests.</i>
 
 ### Example
+
+
 ```python
-from __future__ import print_function
-import time
 import warapi_client
+from warapi_client.models.map import Map
 from warapi_client.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = warapi_client.MapsApi()
-map_name = 'map_name_example' # str | Name of the map
-if_none_match = warapi_client.ComponentsheadersIfNoneMatch() # ComponentsheadersIfNoneMatch |  (optional)
+# Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = warapi_client.Configuration(
+    host = "https://war-service-live.foxholeservices.com/api"
+)
 
-try:
-    # Static map data includes things that never change over the lifecycle of a map. This includes map text labels, resource nodes, and world structures.
-    api_response = api_instance.get_map_static(map_name, if_none_match=if_none_match)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MapsApi->get_map_static: %s\n" % e)
+
+# Enter a context with an instance of the API client
+with warapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = warapi_client.MapsApi(api_client)
+    map_name = 'DeadLandsHex' # str | Name of the map
+    if_none_match = '10' # str | https://datatracker.ietf.org/doc/html/rfc7232 (optional)
+
+    try:
+        # Static map data includes things that never change over the lifecycle of a map. This includes map text labels, resource nodes, and world structures.
+        api_response = api_instance.get_map_static(map_name, if_none_match=if_none_match)
+        print("The response of MapsApi->get_map_static:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MapsApi->get_map_static: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **map_name** | **str**| Name of the map | 
- **if_none_match** | [**ComponentsheadersIfNoneMatch**](.md)|  | [optional] 
+ **if_none_match** | **str**| https://datatracker.ietf.org/doc/html/rfc7232 | [optional] 
 
 ### Return type
 
@@ -107,40 +143,60 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful operation |  * ETag -  <br>  |
+**304** | Resource not modified |  * ETag -  <br>  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_maps**
-> list[str] get_maps()
+> List[str] get_maps()
 
 Returns a list of the active World Conquest map names.
 
 <p>Note: The maps HomeRegionC and HomeRegionW are returned here, but do not have map data available in this version.</p>
 
 ### Example
+
+
 ```python
-from __future__ import print_function
-import time
 import warapi_client
 from warapi_client.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = warapi_client.MapsApi()
+# Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = warapi_client.Configuration(
+    host = "https://war-service-live.foxholeservices.com/api"
+)
 
-try:
-    # Returns a list of the active World Conquest map names.
-    api_response = api_instance.get_maps()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MapsApi->get_maps: %s\n" % e)
+
+# Enter a context with an instance of the API client
+with warapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = warapi_client.MapsApi(api_client)
+
+    try:
+        # Returns a list of the active World Conquest map names.
+        api_response = api_instance.get_maps()
+        print("The response of MapsApi->get_maps:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MapsApi->get_maps: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-**list[str]**
+**List[str]**
 
 ### Authorization
 
@@ -150,6 +206,12 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -161,32 +223,46 @@ Returns the number of enlistments, casualties, and other map specific informatio
 <p></p><i>This data may update every 3 seconds.</i>
 
 ### Example
+
+
 ```python
-from __future__ import print_function
-import time
 import warapi_client
+from warapi_client.models.war_report import WarReport
 from warapi_client.rest import ApiException
 from pprint import pprint
 
-# create an instance of the API class
-api_instance = warapi_client.MapsApi()
-map_name = 'map_name_example' # str | Name of the map
-if_none_match = warapi_client.ComponentsheadersIfNoneMatch() # ComponentsheadersIfNoneMatch |  (optional)
+# Defining the host is optional and defaults to https://war-service-live.foxholeservices.com/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = warapi_client.Configuration(
+    host = "https://war-service-live.foxholeservices.com/api"
+)
 
-try:
-    # Returns the number of enlistments, casualties, and other map specific information.
-    api_response = api_instance.get_war_report(map_name, if_none_match=if_none_match)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling MapsApi->get_war_report: %s\n" % e)
+
+# Enter a context with an instance of the API client
+with warapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = warapi_client.MapsApi(api_client)
+    map_name = 'DeadLandsHex' # str | Name of the map
+    if_none_match = '10' # str | https://datatracker.ietf.org/doc/html/rfc7232 (optional)
+
+    try:
+        # Returns the number of enlistments, casualties, and other map specific information.
+        api_response = api_instance.get_war_report(map_name, if_none_match=if_none_match)
+        print("The response of MapsApi->get_war_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MapsApi->get_war_report: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **map_name** | **str**| Name of the map | 
- **if_none_match** | [**ComponentsheadersIfNoneMatch**](.md)|  | [optional] 
+ **if_none_match** | **str**| https://datatracker.ietf.org/doc/html/rfc7232 | [optional] 
 
 ### Return type
 
@@ -200,6 +276,13 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful operation |  * ETag -  <br>  |
+**304** | Resource not modified |  * ETag -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,0 +1,69 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="56">
+            <item index="0" class="java.lang.String" itemvalue="protobuf" />
+            <item index="1" class="java.lang.String" itemvalue="maestro-python-client" />
+            <item index="2" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="3" class="java.lang.String" itemvalue="pre-commit" />
+            <item index="4" class="java.lang.String" itemvalue="wcwidth" />
+            <item index="5" class="java.lang.String" itemvalue="requests" />
+            <item index="6" class="java.lang.String" itemvalue="redis" />
+            <item index="7" class="java.lang.String" itemvalue="flake8" />
+            <item index="8" class="java.lang.String" itemvalue="pynvim" />
+            <item index="9" class="java.lang.String" itemvalue="ftfy" />
+            <item index="10" class="java.lang.String" itemvalue="pytest-cov" />
+            <item index="11" class="java.lang.String" itemvalue="pytest-mock" />
+            <item index="12" class="java.lang.String" itemvalue="lxml" />
+            <item index="13" class="java.lang.String" itemvalue="urllib3" />
+            <item index="14" class="java.lang.String" itemvalue="boilerpy3" />
+            <item index="15" class="java.lang.String" itemvalue="bandit" />
+            <item index="16" class="java.lang.String" itemvalue="pytest" />
+            <item index="17" class="java.lang.String" itemvalue="black" />
+            <item index="18" class="java.lang.String" itemvalue="pipenv" />
+            <item index="19" class="java.lang.String" itemvalue="removecookiesnotice" />
+            <item index="20" class="java.lang.String" itemvalue="vulture" />
+            <item index="21" class="java.lang.String" itemvalue="dependency-injector" />
+            <item index="22" class="java.lang.String" itemvalue="faker" />
+            <item index="23" class="java.lang.String" itemvalue="distlib" />
+            <item index="24" class="java.lang.String" itemvalue="isort" />
+            <item index="25" class="java.lang.String" itemvalue="neovim" />
+            <item index="26" class="java.lang.String" itemvalue="tika" />
+            <item index="27" class="java.lang.String" itemvalue="msgpack" />
+            <item index="28" class="java.lang.String" itemvalue="annotated-types" />
+            <item index="29" class="java.lang.String" itemvalue="pydantic" />
+            <item index="30" class="java.lang.String" itemvalue="h11" />
+            <item index="31" class="java.lang.String" itemvalue="typing-extensions" />
+            <item index="32" class="java.lang.String" itemvalue="pydantic-core" />
+            <item index="33" class="java.lang.String" itemvalue="sniffio" />
+            <item index="34" class="java.lang.String" itemvalue="click" />
+            <item index="35" class="java.lang.String" itemvalue="fastapi" />
+            <item index="36" class="java.lang.String" itemvalue="starlette" />
+            <item index="37" class="java.lang.String" itemvalue="anyio" />
+            <item index="38" class="java.lang.String" itemvalue="uvicorn" />
+            <item index="39" class="java.lang.String" itemvalue="idna" />
+            <item index="40" class="java.lang.String" itemvalue="pymongo" />
+            <item index="41" class="java.lang.String" itemvalue="falcon" />
+            <item index="42" class="java.lang.String" itemvalue="fakeredis" />
+            <item index="43" class="java.lang.String" itemvalue="lupa" />
+            <item index="44" class="java.lang.String" itemvalue="pytest-xdist" />
+            <item index="45" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="46" class="java.lang.String" itemvalue="python-redis-lock" />
+            <item index="47" class="java.lang.String" itemvalue="sortedcontainers" />
+            <item index="48" class="java.lang.String" itemvalue="abstractqueue" />
+            <item index="49" class="java.lang.String" itemvalue="pyyaml" />
+            <item index="50" class="java.lang.String" itemvalue="falcon-middlewares" />
+            <item index="51" class="java.lang.String" itemvalue="pytest-subtests" />
+            <item index="52" class="java.lang.String" itemvalue="gevent" />
+            <item index="53" class="java.lang.String" itemvalue="jsonschema" />
+            <item index="54" class="java.lang.String" itemvalue="gql" />
+            <item index="55" class="java.lang.String" itemvalue="pytest-sugar" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
