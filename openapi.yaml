@@ -287,22 +287,18 @@ components:
         mapItems:
           type: array
           items:
-            type: object
             $ref: '#/components/schemas/MapItem'
         mapItemsC:
           type: array
           items:
-            type: object
             $ref: '#/components/schemas/MapItem'
         mapItemsW:
           type: array
           items:
-            type: object
             $ref: '#/components/schemas/MapItem'
         mapTextItems:
           type: array
           items:
-            type: object
             $ref: '#/components/schemas/MapTextItems'
         lastUpdated:
           type: integer
